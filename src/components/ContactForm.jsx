@@ -28,7 +28,7 @@ const ContactForm = () => {
 
                 {/* SECTION HEADER */}
                 <div className="text-center mb-14 md:mb-20">
-                    <h2 className="text-3xl md:text-4xl font-bold">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white">
                         <span className="text-primary">Contact</span> Us
                     </h2>
                     <p className="mt-4 text-zinc-400 max-w-2xl mx-auto">
