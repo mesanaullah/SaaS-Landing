@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+* {
+  font-family: 'Inter', system-ui, sans-serif;
+}
 a.active hr{
   display: block;
 }

@@ -1,60 +1,65 @@
-import React from 'react'
 import { motion } from "framer-motion";
-
+import Sparkles from "./Sparkles";
 
 const Hero = () => {
     return (
-        <section id="hero" className="relative min-h-screen bg-black overflow-hidden text-white">
-
-            {/* Spline 3D Background */}
-            <iframe
-                src="https://my.spline.design/saashero-abc123"
-                className="absolute inset-0 w-full h-full"
-                frameBorder="0"
-            />
-
-            {/* Dark overlay for readability */}
-            <div className="absolute inset-0 bg-black/40 z-0" />
+        <section
+            id="hero"
+            className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden"
+        >
+            {/* Sparkles background */}
+            <Sparkles />
 
             {/* Content */}
-            <div className="relative z-10 max-w-6xl mx-auto px-6 pt-40 text-center">
-
-                <motion.h1
-                    initial={{ opacity: 0, y: 40 }}
+            <div className="relative z-10 text-center max-w-4xl px-6">
+                {/* Heading */}
+                {/* <motion.h1
+                    initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.9 }}
-                    className="text-4xl md:text-6xl font-bold leading-tight"
+                    transition={{ duration: 1 }}
+                    className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight"
                 >
                     The all-in-one platform
-                    <span className="block mt-3">for Web & AI Solutions</span>
+                    <span className="block mt-3">
+                        for{" "}
+                        <span className="text-primary">Web & AI</span>{" "}
+                        Solutions
+                    </span>
+                </motion.h1> */}
+                <motion.h1
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1 }}
+                    className=" text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]"
+                >
+                    The all-in-one platform
+                    <span className="block mt-3">
+                        for <span className="text-primary">Web & AI</span> Solutions
+                    </span>
                 </motion.h1>
 
+
+                {/* Subheading */}
                 <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.3 }}
-                    className="mt-6 text-lg text-zinc-300 max-w-2xl mx-auto"
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                    className="mt-6 text-base sm:text-lg md:text-xl text-zinc-400 leading-relaxed"
                 >
-                    We build intelligent, scalable, and high-performance digital experiences
-                    powered by modern web technologies and AI.
+                    We build intelligent, scalable, and high-performance digital
+                    experiences powered by modern web technologies and AI.
                 </motion.p>
 
+                {/* Glowing horizon line */}
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                    className="mt-10 flex justify-center gap-4"
-                >
-                    <button className="px-8 py-4 bg-brand rounded-xl font-medium">
-                        Get Started
-                    </button>
-                    <button className="px-8 py-4 border border-zinc-700 rounded-xl">
-                        View Services
-                    </button>
-                </motion.div>
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 1.2, delay: 0.4 }}
+                    className="mx-auto mt-10 h-px w-64 sm:w-80 bg-linear-to-r from-transparent via-blue-500 to-transparent"
+                />
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default Hero
+export default Hero;

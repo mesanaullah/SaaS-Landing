@@ -9,12 +9,14 @@ import LatestWork from './components/LatestWork'
 import ContactForm from './components/ContactForm'
 import Technologies from './components/Technologies'
 import Industries from './components/Industries'
+import AboutUs from './components/AboutUs'
 
 const App = () => {
   return (
     <div>
       <Navbar />
       <Hero />
+      <AboutUs />
       <Services />
       <Technologies />
       <Industries />

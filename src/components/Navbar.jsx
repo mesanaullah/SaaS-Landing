@@ -6,6 +6,7 @@ import { IoReorderThreeOutline } from "react-icons/io5";
 
 const navItems = [
     { name: "Home", href: "#hero" },
+    { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Technologies", href: "#technologies" },
     { name: "Our Work", href: "#our-work" },
@@ -49,8 +50,7 @@ const Navbar = () => {
                         href="#hero"
                     >
                         <span className="relative z-10">
-                            <span className="text-glow text-primary"> Brand </span>{" "}
-                            Name
+                            <span className="text-glow text-primary"> SaaS </span>{" "}
                         </span>
                     </a>
 
