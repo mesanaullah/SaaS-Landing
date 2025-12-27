@@ -73,7 +73,7 @@ const Navbar = () => {
 
                     <button
                         onClick={() => setIsMenuOpen((prev) => !prev)}
-                        className="md:hidden p-2 text-foreground z-50"
+                        className="md:hidden p-2 text-primary z-50"
                         aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
                     >
                         {isMenuOpen ? <MdClose className='h-6 w-6' /> : <IoReorderThreeOutline className='h-6 w-6' />}{" "}
