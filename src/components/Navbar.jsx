@@ -49,8 +49,8 @@ const Navbar = () => {
                         className="text-xl font-bold text-primary flex items-center"
                         href="#hero"
                     >
-                        <span className="relative z-10">
-                            <span className="text-glow text-primary"> SaaS </span>{" "}
+                        <span className="relative z-10 text-2xl">
+                            <span className="text-glow  text-white">Digital </span>{" "}Webify
                         </span>
                     </a>
 

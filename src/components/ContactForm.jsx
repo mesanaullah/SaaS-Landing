@@ -96,7 +96,7 @@ const ContactForm = () => {
                             href="mailto:mdsanaullah1227@gmail.com"
                             className="mt-2 block text-primary font-medium break-all"
                         >
-                            mdsanaullah1227@gmail.com
+                            digitalwebify7u@gmail.com
                         </a>
                     </div>
 
