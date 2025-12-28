@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FaPaperclip } from "react-icons/fa";
 
+const FORM_ENDPOINT = "https://formspree.io/f/xbdjkddl"; // 👈 replace this
+
 const ContactForm = () => {
     const [form, setForm] = useState({
         name: "",
@@ -10,25 +12,60 @@ const ContactForm = () => {
         message: "",
     });
 
+    const [status, setStatus] = useState("idle");
+
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(form);
+        setStatus("sending");
+
+        try {
+            const formData = new FormData(e.target);
+
+            const response = await fetch(FORM_ENDPOINT, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    Accept: "application/json",
+                },
+            });
+
+            const result = await response.json();
+
+            if (result.ok) {
+                setStatus("success");
+
+                // ✅ RESET REACT STATE
+                setForm({
+                    name: "",
+                    email: "",
+                    phone: "",
+                    skype: "",
+                    message: "",
+                });
+
+                // ✅ RESET HTML FORM
+                e.target.reset();
+            } else {
+                setStatus("error");
+            }
+        } catch (error) {
+            console.error("Form error:", error);
+            setStatus("error");
+        }
     };
 
+
     return (
-        <section
-            id="contact"
-            className="bg-black text-white py-10 md:py-15"
-        >
+        <section id="contact" className="bg-black text-white py-10 md:py-15">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
                 {/* SECTION HEADER */}
                 <div className="text-center mb-14 md:mb-20">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white">
+                    <h2 className="text-3xl md:text-4xl font-bold">
                         <span className="text-primary">Contact</span> Us
                     </h2>
                     <p className="mt-4 text-zinc-400 max-w-2xl mx-auto">
@@ -64,10 +101,11 @@ const ContactForm = () => {
                     </div>
 
                     {/* RIGHT FORM */}
-                    <form
-                        onSubmit={handleSubmit}
-                        className="space-y-6"
-                    >
+                    <form onSubmit={handleSubmit} className="space-y-6">
+
+                        {/* Honeypot (spam protection) */}
+                        <input type="text" name="_gotcha" className="hidden" />
+
                         {/* ROW 1 */}
                         <div className="grid gap-6 md:grid-cols-2">
                             <input
@@ -124,21 +162,29 @@ const ContactForm = () => {
                             className="w-full rounded-xl border border-zinc-800 px-5 py-4 bg-black text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary/20 resize-none"
                         />
 
-                        {/* FILE UPLOAD */}
-                        <div className="flex items-center gap-3 text-zinc-400 cursor-pointer">
-                            <FaPaperclip />
-                            <span className="text-sm font-medium">Add files</span>
-                        </div>
-
                         {/* SUBMIT */}
                         <button
                             type="submit"
-                            className="w-full sm:w-auto bg-primary text-black px-10 py-4 rounded-xl font-medium hover:bg-primaryHover transition"
+                            disabled={status === "sending"}
+                            className="w-full sm:w-auto bg-primary text-black px-10 py-4 rounded-xl font-medium hover:bg-primaryHover transition disabled:opacity-60"
                         >
-                            Submit
+                            {status === "sending" ? "Sending..." : "Submit"}
                         </button>
-                    </form>
 
+                        {/* STATUS */}
+                        {status === "success" && (
+                            <p className="text-green-400 text-sm">
+                                Thanks! Your message has been sent.
+                            </p>
+                        )}
+
+                        {status === "error" && (
+                            <p className="text-red-400 text-sm">
+                                Something went wrong. Please try again.
+                            </p>
+                        )}
+
+                    </form>
                 </div>
             </div>
         </section>
