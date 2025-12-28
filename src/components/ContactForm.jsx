@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaPaperclip } from "react-icons/fa";
 
-const FORM_ENDPOINT = "https://formspree.io/f/xbdjkddl"; // 👈 replace this
+const FORM_ENDPOINT = "https://formspree.io/f/xzdbvgyv";
 
 const ContactForm = () => {
     const [form, setForm] = useState({
