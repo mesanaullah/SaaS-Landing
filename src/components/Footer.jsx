@@ -14,7 +14,7 @@ const Footer = () => {
                 {/* Brand */}
                 <div>
                     <h3 className="text-xl font-semibold text-white mb-4">
-                        YourBrand
+                        DigitalWebify
                     </h3>
                     <p className="text-sm leading-relaxed text-zinc-400">
                         We build intelligent, scalable, and high-performance digital
@@ -76,7 +76,7 @@ const Footer = () => {
                 {/* Contact */}
                 <div>
                     <h4 className="text-white font-semibold mb-4">Contact</h4>
-                    <p className="text-sm">hello@yourdomain.com</p>
+                    <p className="text-sm">digitalwebify7u@gmail.com</p>
                     <p className="text-sm mt-2">India</p>
                 </div>
             </div>
